@@ -60,8 +60,145 @@
         </header>
     <section>
         <h1>Introduction</h1>
-        <h2></h2>
-                                        
+        <h2>Lab Kit</h2>
+        <figure>
+            <img src="images/datexkit.png"/>
+            <figcaption>NIElvis Datex Kit</figcaption>
+        </figure>
+        <a href="https://emonatims.b-cdn.net/wp-content/uploads/2015/07/EMONA-Datex-broch-v3-A3.pdf">for More Information</a>
+        <h2>Modulation Schemes</h2>
+        <h3>Amplitude Shift Keying Modulation</h3>
+        <figure>
+            <img src="images/ask.png"/>
+            <figcaption>Amplitude Shift Keying Modulation timing WaveForm</figcaption>
+        </figure> 
+        <h4>Modulation using NIElvisII</h4>   
+        <figure>
+            <img src="images/ask_blockdiagram.png"/>
+            <figcaption>Amplitude Shift Keying Modulation Block Diagram</figcaption>
+        </figure>     
+        <figure>
+            <img src="images/lab100khzcarrier.png"/>
+            <figcaption>Amplitude Shift Keying Modulation using 100KHz Sinusoidal Carrier</figcaption>
+        </figure>  
+        <h4>Demodulation using NIElvisII</h4>
+        <figure>
+            <img src="images/askdemod.png"/>
+            <figcaption>Amplitude Shift Keying Demodulation Block Diagram</figcaption>
+        </figure>
+        <figure>
+            <img src="images/askdemodlabview.png"/>
+            <figcaption>Amplitude Shift Keying Demodulation</figcaption>
+        </figure>
+        <p>
+            The output(blue) is attenuated because it passes through lowpass filter which attenuates the signal so we need
+            to use comparator in order to make signal looks like the input (green)
+        </p> 
+        <figure>
+            <img src="images/comparatorwiring.png"/>
+            <figcaption>Amplitude Shift Keying Demodulation Final Wiring</figcaption>
+        </figure>
+        <figure>
+            <img src="images/fullblockdiagram.png"/>
+            <figcaption>Full Block Diagram of ASK Demodulation</figcaption>
+        </figure>
+        <figure>
+            <img src="images/waveformfinalop.png"/>
+            <figcaption>After Restoration</figcaption>
+        </figure> 
+        <h3>Frequency Shift Keying</h3>
+        <p>
+            logic '1' modulating carrier frequency by increasing \(f_c\) by \(\Delta f\) and logic '0' modulates carrier
+            frequency by decreasing \(f_c\) by \(\Delta f\)
+        </p>
+        <figure>
+            <img src="images/fskmod.png"/>
+            <figcaption>Frequency Shift Keying Modulation</figcaption>
+        </figure>
+        <h4>Modulation</h4>
+        <figure>
+            <img src="images/fskmodblockdiagram.png"/>
+            <figcaption>Frequency Shift Keying Modulation Block Diagram</figcaption>
+        </figure>
+        <figure>
+            <img src="images/fskwaveform.png"/>
+            <figcaption>Frequency Shift Keying Modulation Wave Form</figcaption>
+        </figure>
+        <h4>Demodulation</h4>
+        <figure>
+            <img src="images/fskdemodwaveform.png"/>
+            <figcaption>Frequency Shift Keying Filtered Wave Form</figcaption>
+        </figure>
+        <p>
+            Signal is filtered with a phase shift now we need to demod it
+        </p>
+        <figure>
+            <img src="images/demodfsk.png"/>
+            <figcaption>Frequency Shift Keying Demodulation Wave Form</figcaption>
+        </figure>
+        <p>
+            We find the output inverted so we will reverse inputs when we connect comparator
+        </p>
+        <figure>
+            <img src="images/fskdemod.png"/>
+            <figcaption>Frequency Shift Keying Demodulation BlockDiagram</figcaption>
+        </figure>
+        <figure>
+            <img src="images/fskfulldiagram.png"/>
+            <figcaption>Frequency Shift Keying Demodulation Full Block Diagram</figcaption>
+        </figure>
+        <h3>Binary Phase Shift Keying Mod/Demod</h3>
+        <h4>Modulation</h4>
+        <figure>
+            <img src="images/bpskmod.png"/>
+            <figcaption>Binary Phase Shift Keying Modulation</figcaption>
+        </figure>
+        <figure>
+            <img src="images/bpskmodbd.png"/>
+            <figcaption>Binary Phase Shift Keying Modulation Block Diagram</figcaption>
+        </figure>
+        <figure>
+            <img src="images/bpskmodwf.png"/>
+            <figcaption>Binary Phase Shift Keying Modulation Wave Form</figcaption>
+        </figure>
+        <h4>Demodulation</h4>
+        <figure>
+            <img src="images/bpskdemodbd.png"/>
+            <figcaption>Binary Phase Shift Keying Demodulation Block Diagram</figcaption>
+        </figure>
+        <h3>Quadrature Phase Shift Keying</h3>
+        <h4>Modulation</h4>
+        <figure>
+            <img src="images/qpskbd.png"/>
+            <figcaption>QPSK Modulation Block Diagram</figcaption>
+        </figure>
+        <p>
+            QPSK modulation consists of two bpsk modulation operations and also carrier plays a factor where
+            as we modulate with sine and cos that means we arenot doing modulation at baseband like previous
+            schemes.
+        </p>
+        <figure>
+            <img src="images/evenoddbits.png"/>
+            <figcaption>Even/Odd bits Stream</figcaption>
+        </figure>
+        <figure>
+            <img src="images/qpskmodbd.png"/>
+            <figcaption>QPSK Modulation Block Diagram</figcaption>
+        </figure>
+        <h4>Demodulation</h4>
+        <figure>
+            <img src="images/qpskdemodbd.png"/>
+            <figcaption>QPSK Demodulation Block Diagram</figcaption>
+        </figure>
+
+        <figure>
+            <img src="images/bwqpsk.png"/>
+            <figcaption>Bandwidth of QPSK</figcaption>
+        </figure>
+        <p>
+            Bandwidth of QPSK = Bandwidth of BPSK which means we are sending double the data size and with same bandwidth
+        </p>
+        
     </section>
 <footer>
     <p><small>Hosted on <a href="https://www.github.com/hishamelreedy/">GitHub Pages</a> by HishamElreedy</small></p>
