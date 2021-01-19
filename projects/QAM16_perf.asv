@@ -6,7 +6,7 @@ N=100; % Number of Samples
 M=16; % Number bits per symbol
 %-------------------Data Generation---------------------------%
 data=randi([0 M-1],N,1);
-data=[0:M-1];
+%data=[0:M-1];
 %-----------Grey Encoding------------%
 [datagrey,mapgrey] = bin2gray(data,'qam',M);
 %-------------------16-QAM Modulation----------------------------%
@@ -59,4 +59,9 @@ for N = 1:length(yk)
      datademod(N) = idx-1;
 end
 [datademodbin,mapbin] = gray2bin(datademod,'qam',M);
-BER(i)=biterr(datademodbin,data)/(length(data)*log2(M));
+
+%% BER
+BER=biterr(datademodbin,data)/(length(data)*log2(M));
+BER=drawber(1);
+%% Repitition Code
+
