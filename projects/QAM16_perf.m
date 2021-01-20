@@ -52,7 +52,10 @@ scatterplot(yk);
 title('AWGN Channel Effect');
 
 %% Correlator & Decision Model
-consttable=[-3-3i, -3-1i, -3+3i, -3+1i, -1-3i, -1-1i, -1+3i, -1+1i, 3-3i, 3-1i, 3+3i, 3+1i, 1-3i, 1-1i, 1+3i, 1+1i];
+consttable=[-3-3i, -3-1i, -3+3i, -3+1i,...
+            -1-3i, -1-1i, -1+3i, -1+1i,...
+            3-3i, 3-1i, 3+3i, 3+1i,...
+            1-3i, 1-1i, 1+3i, 1+1i];
 for N = 1:length(yk)
      %compute the minimum distance for each symbol  
      [~, idx] = min(abs(yk(N) - consttable));
@@ -62,7 +65,7 @@ end
 datademodbin=datademodbin(:);
 
 %% BER
-%BER=biterr(datademodbin,data)/(length(data)*log2(M));
+BER=biterr(datademodbin,data)/(length(data)*log2(M));
 i=1;
 for Es_N0_dB = [-4:0.1:16]
     for meannum=1:100

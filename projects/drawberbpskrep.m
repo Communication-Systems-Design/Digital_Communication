@@ -1,13 +1,16 @@
-function BER=drawberqpsk(No)
-N=1000; % Number of Samples
-M=4; % Number bits per symbol
+function BER=drawberbpskrep(No)
+N=1000; % Number of Samples * repeattimes
+M=2; % Number bits per symbol
+reptimes=3;
 %-------------------Data Generation---------------------------%
 data=randi([0 M-1],N,1);
+if reptimes~=0
+    data=repmat(data,reptimes,1);
+end
 %-----------Grey Encoding------------%
 [datagrey,mapgrey] = bin2gray(data,'qam',M);
-%-------------------QPSK Modulation----------------------------%
-consttable=[-1-1i,-1+1i,1-1i,1+1i];
-
+%-------------------BPSK Modulation----------------------------%
+consttable=[1 -1];
 for k=1:length(datagrey)
     tx(k) = consttable(datagrey(k)+1);
 end 
@@ -15,7 +18,7 @@ tx=tx(:);
 % Rayleigh-Fading Channel Model
 hr=normrnd(0,sqrt(0.5),1);
 hi=normrnd(0,sqrt(0.5),1);
-h=(hr+1i*hi)*ones(1,N);
+h=(hr+1i*hi)*ones(1,N*reptimes);
 h=h(:);
 rx=tx.*h;
 % AWGN Channel
@@ -23,14 +26,14 @@ rx=tx.*h;
 mu=0;
 variance=No/2;
 sigma=sqrt(variance);
-nc=normrnd(mu,sigma,[1,N]);
-ns=normrnd(mu,sigma,[1,N]);
+nc=normrnd(mu,sigma,[1,N*reptimes]);
+ns=normrnd(mu,sigma,[1,N*reptimes]);
 n=nc+1i*ns;
 n=n(:);
 yk=rx+n;
 yk=yk/h;
 % Correlator & Decision Model
-consttable=[-1-1i,-1+1i,1-1i,1+1i];
+consttable=[1 -1];
 for N = 1:length(yk)
      %compute the minimum distance for each symbol  
      [~, idx] = min(abs(yk(N) - consttable));

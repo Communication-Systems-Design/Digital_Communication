@@ -1,4 +1,4 @@
-function BER=drawber16qam(No)
+function BER=drawberbpskrep(No)
 N=1000; % Number of Samples
 M=2; % Number bits per symbol
 %-------------------Data Generation---------------------------%

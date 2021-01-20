@@ -65,14 +65,20 @@ i=1;
 for Es_N0_dB = [-4:0.1:16]
     for meannum=1:100
         meanv(meannum)=drawberbpsk(10^(-Es_N0_dB/10));
+        meanvrep(meannum)=drawberbpskrep(10^(-Es_N0_dB/10));
     end
     BER(i)=sum(meanv(:))/100;
+    BERrep(i)=sum(meanvrep(:))/100;
     i=i+1;
 end
 Es_N0_dB = [-4:0.1:16];
 plot(Es_N0_dB,1*log10(BER));
-
+hold on;
+plot(Es_N0_dB,1*log10(BERrep));
+hold off;
+legend('BER','BER With Repetition');
+grid on;
 %% Repitition Code
-
+%added to function by repeating symbol three times using repmat
 
 
